@@ -72,15 +72,25 @@ function initializeFunctions() {
             const whatsapp = document.getElementById('whatsapp').value;
             const alamat = document.getElementById('alamat').value;
             const catatan = document.getElementById('catatan').value;
-            const layanan = document.querySelector('input[name="layanan"]:checked').value;
+            
+            // Ambil semua layanan yang dipilih (multiple checkbox)
+            const selectedLayanan = document.querySelectorAll('input[name="layanan"]:checked');
+            
+            if (selectedLayanan.length === 0) {
+                showNotification('Silakan pilih minimal satu layanan!', 'warning');
+                return;
+            }
             
             // Nama layanan untuk ditampilkan
             const layananNames = {
                 'kiloan': 'Laundry Kiloan',
-                'satuan': 'Laundry Satuan',
-                'karpet': 'Cuci Karpet',
-                'sneaker': 'Cuci Sneaker'
+                'satuan': 'Laundry Express', 
+                'karpet': 'Laundry Kilat',
+                'sneaker': 'Laundry Custom'
             };
+            
+            // Format layanan yang dipilih
+            const layananList = Array.from(selectedLayanan).map(cb => layananNames[cb.value]).join(', ');
             
             // Format pesan untuk WhatsApp
             const message = `Halo Wash Up Laundry! Saya mau pesan laundry nih.
@@ -88,7 +98,7 @@ function initializeFunctions() {
 Nama: ${nama}
 No WhatsApp: ${whatsapp}
 Alamat: ${alamat}
-Layanan: ${layananNames[layanan]}
+Layanan: ${layananList}
 Catatan: ${catatan || 'Tidak ada catatan'}
 
 Bisa dibantu untuk penjemputan? Terima kasih!`;
@@ -96,8 +106,8 @@ Bisa dibantu untuk penjemputan? Terima kasih!`;
             // Encode pesan untuk URL
             const encodedMessage = encodeURIComponent(message);
             
-            // Redirect ke WhatsApp (nomor admin dummy)
-            const whatsappNumber = '6281234567890';
+            // Redirect ke WhatsApp
+            const whatsappNumber = '6285233447337';
             const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
             
             // Buka WhatsApp di tab baru
@@ -105,6 +115,9 @@ Bisa dibantu untuk penjemputan? Terima kasih!`;
             
             // Reset form
             orderForm.reset();
+            
+            // Reset visual buttons
+            resetServiceButtons();
             
             // Tampilkan notifikasi
             showNotification('Pesanan berhasil dikirim! Admin akan menghubungi kamu via WhatsApp.');
@@ -163,6 +176,110 @@ Bisa dibantu untuk penjemputan? Terima kasih!`;
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'translateY(0)';
         });
+    });
+    
+    // Fungsi untuk menghubungkan button "Pilih Layanan" dengan checkbox di form
+    initializeServiceButtons();
+}
+
+// Fungsi untuk menghubungkan button service dengan checkbox form
+function initializeServiceButtons() {
+    // Tunggu sebentar agar semua elemen termuat
+    setTimeout(() => {
+        // Cari semua button "Pilih Layanan" di section services
+        const serviceButtons = document.querySelectorAll('#layanan button');
+        
+        serviceButtons.forEach((button, index) => {
+            // Mapping service berdasarkan index
+            const serviceMapping = ['kiloan', 'satuan', 'karpet', 'sneaker'];
+            const serviceValue = serviceMapping[index];
+            
+            if (serviceValue) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Cari checkbox yang sesuai di form
+                    const checkbox = document.querySelector(`input[name="layanan"][value="${serviceValue}"]`);
+                    
+                    if (checkbox) {
+                        // Toggle checkbox
+                        checkbox.checked = !checkbox.checked;
+                        
+                        // Update visual feedback
+                        updateServiceButtonVisual(button, checkbox.checked);
+                        updateLayananItemVisual(checkbox);
+                        
+                        // Scroll ke form order
+                        scrollToOrderForm();
+                        
+                        // Tampilkan notifikasi
+                        const serviceName = checkbox.parentElement.querySelector('.font-medium').textContent;
+                        const action = checkbox.checked ? 'ditambahkan' : 'dihapus';
+                        showNotification(`${serviceName} ${action} dari keranjang`);
+                    }
+                });
+            }
+        });
+        
+        // Update visual button saat checkbox berubah
+        const checkboxes = document.querySelectorAll('input[name="layanan"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                updateLayananItemVisual(this);
+            });
+        });
+    }, 500);
+}
+
+// Update visual button service
+function updateServiceButtonVisual(button, isSelected) {
+    if (isSelected) {
+        button.textContent = '✓ Dipilih';
+        button.classList.remove('bg-secondary');
+        button.classList.add('bg-green-500');
+    } else {
+        button.textContent = 'Pilih Layanan';
+        button.classList.remove('bg-green-500');
+        button.classList.add('bg-secondary');
+    }
+}
+
+// Update visual layanan item di form
+function updateLayananItemVisual(checkbox) {
+    const layananItem = checkbox.closest('.layanan-item');
+    if (layananItem) {
+        if (checkbox.checked) {
+            layananItem.classList.add('bg-blue-50', 'border-primary');
+        } else {
+            layananItem.classList.remove('bg-blue-50', 'border-primary');
+        }
+    }
+}
+
+// Scroll ke form order
+function scrollToOrderForm() {
+    const orderForm = document.getElementById('pesan');
+    if (orderForm) {
+        orderForm.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+    }
+}
+
+// Reset semua button service ke kondisi awal
+function resetServiceButtons() {
+    const serviceButtons = document.querySelectorAll('#layanan button');
+    serviceButtons.forEach(button => {
+        button.textContent = 'Pilih Layanan';
+        button.classList.remove('bg-green-500');
+        button.classList.add('bg-secondary');
+    });
+    
+    // Reset visual layanan items
+    const layananItems = document.querySelectorAll('.layanan-item');
+    layananItems.forEach(item => {
+        item.classList.remove('bg-blue-50', 'border-primary');
     });
 }
 
