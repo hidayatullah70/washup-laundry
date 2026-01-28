@@ -40,7 +40,13 @@ body {
   background-color: var(--background);
   line-height: 1.6;
   overflow-x: hidden;
-  padding-top: 80px; /* Height of fixed navbar */
+  padding-top: 60px; /* Reduced height for mobile */
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-top: 80px; /* Original height for desktop */
+  }
 }
 
 /* ===== TYPOGRAPHY ENHANCEMENTS ===== */
@@ -545,8 +551,13 @@ p {
 
 /* Focus styles for keyboard navigation */
 :focus-visible {
-  outline: 3px solid var(--primary);
-  outline-offset: 2px;
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+/* Hide focus outline on mouse interaction */
+:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* Screen reader only text */
@@ -694,6 +705,7 @@ p {
 
 .heading-responsive {
   font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--text);
 }
 
 /* ===== END OF STYLES ===== */
