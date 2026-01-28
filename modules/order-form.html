@@ -1,0 +1,332 @@
+<!-- Order & Contact Section -->
+<section id="pesan" class="py-16 bg-gradient-to-b from-blue-50 to-white">
+    <div class="container mx-auto px-4">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-dark text-3xl md:text-4xl font-bold mb-4">Pesan & Kontak</h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                Isi form untuk pesan laundry atau hubungi kami langsung untuk info lebih lanjut.
+            </p>
+        </div>
+        
+        <!-- Grid Layout: Order Form Kiri, Contact Kanan -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            <!-- Left Side - Order Form -->
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                <div class="p-8 md:p-12">
+                    <h3 class="text-dark text-2xl font-bold mb-2">Pesan Sekarang</h3>
+                    <p class="text-gray-600 mb-6">
+                        Isi form, kami hubungi via WhatsApp untuk konfirmasi & jadwal penjemputan.
+                    </p>
+                    
+                    <form id="orderForm" class="space-y-6">
+                        <!-- Nama -->
+                        <div>
+                            <label for="nama" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
+                            <input type="text" id="nama" name="nama" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                   placeholder="Masukkan nama kamu">
+                        </div>
+                        
+                        <!-- WhatsApp -->
+                        <div>
+                            <label for="whatsapp" class="block text-gray-700 font-medium mb-2">No WhatsApp</label>
+                            <div class="flex">
+                                <div class="bg-gray-100 px-4 py-3 rounded-l-xl border border-r-0 border-gray-300">
+                                    +62
+                                </div>
+                                <input type="tel" id="whatsapp" name="whatsapp" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-r-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       placeholder="812-3456-7890">
+                            </div>
+                        </div>
+                        
+                        <!-- Alamat -->
+                        <div>
+                            <label for="alamat" class="block text-gray-700 font-medium mb-2">Alamat Penjemputan</label>
+                            <textarea id="alamat" name="alamat" rows="3" required 
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                      placeholder="Alamat lengkap (kost/kos, komplek, jalan, dll)"></textarea>
+                        </div>
+                        
+                        <!-- Jenis Layanan -->
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Jenis Layanan (Bisa pilih lebih dari satu)</label>
+                            <div class="grid grid-cols-2 gap-3" id="layanan-container">
+                                <label class="flex items-center p-3 border border-gray-300 rounded-xl cursor-pointer hover:bg-blue-50 layanan-item">
+                                    <input type="checkbox" name="layanan" value="kiloan" class="mr-3 layanan-checkbox">
+                                    <div>
+                                        <div class="font-medium">Laundry Kiloan</div>
+                                        <div class="text-sm text-gray-500">Rp 6.000/kg</div>
+                                    </div>
+                                </label>
+                                
+                                <label class="flex items-center p-3 border border-gray-300 rounded-xl cursor-pointer hover:bg-blue-50 layanan-item">
+                                    <input type="checkbox" name="layanan" value="satuan" class="mr-3 layanan-checkbox">
+                                    <div>
+                                        <div class="font-medium">Laundry Express</div>
+                                        <div class="text-sm text-gray-500">Rp 7.000/kg</div>
+                                    </div>
+                                </label>
+                                
+                                <label class="flex items-center p-3 border border-gray-300 rounded-xl cursor-pointer hover:bg-blue-50 layanan-item">
+                                    <input type="checkbox" name="layanan" value="karpet" class="mr-3 layanan-checkbox">
+                                    <div>
+                                        <div class="font-medium">Laundry Kilat</div>
+                                        <div class="text-sm text-gray-500">Rp 15.000/kg</div>
+                                    </div>
+                                </label>
+                                
+                                <label class="flex items-center p-3 border border-gray-300 rounded-xl cursor-pointer hover:bg-blue-50 layanan-item">
+                                    <input type="checkbox" name="layanan" value="sneaker" class="mr-3 layanan-checkbox">
+                                    <div>
+                                        <div class="font-medium">Laundry Custom</div>
+                                        <div class="text-sm text-gray-500">Rp sesuai tabel/pcs</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Catatan -->
+                        <div>
+                            <label for="catatan" class="block text-gray-700 font-medium mb-2">Catatan Khusus (Opsional)</label>
+                            <textarea id="catatan" name="catatan" rows="2"
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                                      placeholder="Contoh: Ada noda membandel, pakaian warna terpisah, dll"></textarea>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button type="submit" 
+                                class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-3 text-xl"></i>
+                            Pesan Sekarang via WhatsApp
+                        </button>
+                        
+                        <p class="text-center text-gray-500 text-sm">
+                            Dengan mengisi form, kamu setuju dengan 
+                            <a href="https://wa.me/6281384224733" class="text-primary hover:underline">syarat dan ketentuan</a> kami.
+                        </p>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Right Side - Contact Info -->
+            <div class="bg-background rounded-2xl p-8 shadow-lg">
+                <h3 class="text-dark text-2xl font-bold mb-4">Info Penting</h3>
+                <div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+                            <span>Gratis antar-jemput untuk jarak ≤ 3 km</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+                            <span>Proses 24-48 jam (tergantung jumlah cucian)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+                            <span>Pembayaran via transfer atau cash saat pengantaran</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-secondary mr-3 mt-1"></i>
+                            <span>Garansi 100% jika ada masalah</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <h3 class="text-dark text-2xl font-bold mb-6 mt-8">Hubungi Kami</h3>
+                
+                <!-- Alamat -->
+                <div class="flex items-start mb-8">
+                    <div class="bg-primary/10 p-3 rounded-xl mr-4">
+                        <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Alamat Laundry</h4>
+                        <p class="text-gray-600">
+                            Jl. Anak Kost No. 123<br>
+                            Kelurahan Kuliah, Kecamatan Sibuk<br>
+                            Kota Malang, Jawa Timur
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- WhatsApp -->
+                <div class="flex items-start mb-8">
+                    <div class="bg-green-100 p-3 rounded-xl mr-4">
+                        <i class="fab fa-whatsapp text-green-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">WhatsApp</h4>
+                        <p class="text-gray-600">Admin: +62 852-3344-7337</p>
+                        <a href="https://wa.me/6285233447337?text=Halo%20Wash%20Up%20Laundry,%20aku%20mau%20Laundry%20dong..%20lagi%20mager%20nih..😁,%20tolong%20pick-up%20ya,%20please...🙏"
+                        target="_blank" class="inline-block mt-3 bg-green-600 text-white px-4 py-2 rounded-full text-sm hover:bg-green-700 transition">
+                        <i class="fab fa-whatsapp mr-2"></i>Chat Sekarang
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Jam Operasional -->
+                <div class="flex items-start">
+                    <div class="bg-accent/10 p-3 rounded-xl mr-4">
+                        <i class="fas fa-clock text-accent text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Jam Operasional</h4>
+                        <p class="text-gray-600">
+                            Senin - Jumat: 08.00 - 20.00 WIB<br>
+                            Sabtu - Minggu: 09.00 - 18.00 WIB
+                        </p>
+                        <p class="mt-2 text-sm text-gray-500">
+                            *Penjemputan bisa di luar jam operasional dengan konfirmasi via WhatsApp
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// CSS untuk visual feedback
+const style = document.createElement('style');
+style.textContent = `
+    .border-error {
+        border-color: #2563EB !important;
+        border-width: 2px !important;
+        box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2) !important;
+    }
+    .layanan-container-error .layanan-item {
+        border-color: #2563EB !important;
+        border-width: 2px !important;
+        box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2) !important;
+    }
+`;
+document.head.appendChild(style);
+
+// Fungsi untuk reset error borders
+function resetErrorBorders() {
+    document.querySelectorAll('.border-error').forEach(el => el.classList.remove('border-error'));
+    document.querySelectorAll('.layanan-container-error').forEach(el => el.classList.remove('layanan-container-error'));
+}
+
+// Fungsi untuk menampilkan error borders
+function showErrorBorder(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.classList.add('border-error');
+    }
+}
+
+function showLayananError() {
+    document.getElementById('layanan-container').classList.add('layanan-container-error');
+}
+
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Reset error borders
+    resetErrorBorders();
+    
+    let hasError = false;
+    
+    // Validasi nama
+    const nama = document.getElementById('nama').value.trim();
+    if (!nama) {
+        showErrorBorder('nama');
+        hasError = true;
+    }
+    
+    // Validasi whatsapp
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+    if (!whatsapp) {
+        showErrorBorder('whatsapp');
+        hasError = true;
+    }
+    
+    // Validasi alamat
+    const alamat = document.getElementById('alamat').value.trim();
+    if (!alamat) {
+        showErrorBorder('alamat');
+        hasError = true;
+    }
+    
+    // Validasi minimal satu layanan dipilih
+    const layananCheckboxes = document.querySelectorAll('.layanan-checkbox');
+    const isAnyLayananChecked = Array.from(layananCheckboxes).some(cb => cb.checked);
+    
+    if (!isAnyLayananChecked) {
+        showLayananError();
+        hasError = true;
+    }
+    
+    // Jika ada error, tampilkan alert dan stop
+    if (hasError) {
+        alert('Mohon lengkapi semua field yang wajib diisi!');
+        return;
+    }
+    
+    // Ambil layanan yang dipilih
+    const selectedLayanan = [];
+    layananCheckboxes.forEach(cb => {
+        if (cb.checked) {
+            const label = cb.closest('label').querySelector('.font-medium').textContent;
+            const price = cb.closest('label').querySelector('.text-gray-500').textContent;
+            selectedLayanan.push(`${label} (${price})`);
+        }
+    });
+    
+    // Format pesan WhatsApp
+    const catatan = document.getElementById('catatan').value.trim();
+    const pesan = `*PESANAN LAUNDRY - WASH UP*%0A%0A` +
+        `👤 *Nama:* ${nama}%0A` +
+        `📱 *WhatsApp:* +62${whatsapp}%0A` +
+        `📍 *Alamat:* ${alamat}%0A` +
+        `🧺 *Layanan:* ${selectedLayanan.join(', ')}%0A` +
+        `${catatan ? `📝 *Catatan:* ${catatan}%0A` : ''}%0A` +
+        `Mohon konfirmasi jadwal penjemputan ya. Terima kasih! 🙏`;
+    
+    // Buka WhatsApp
+    window.open(`https://wa.me/6281384224733?text=${pesan}`, '_blank');
+});
+
+// Event listeners untuk menghapus error border saat user mulai mengetik
+document.getElementById('nama').addEventListener('input', function() {
+    if (this.value.trim()) {
+        this.classList.remove('border-error');
+    }
+});
+
+document.getElementById('whatsapp').addEventListener('input', function() {
+    if (this.value.trim()) {
+        this.classList.remove('border-error');
+    }
+});
+
+document.getElementById('alamat').addEventListener('input', function() {
+    if (this.value.trim()) {
+        this.classList.remove('border-error');
+    }
+});
+
+// Event listener untuk checkbox layanan
+document.querySelectorAll('.layanan-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+        const layananCheckboxes = document.querySelectorAll('.layanan-checkbox');
+        const isAnyLayananChecked = Array.from(layananCheckboxes).some(cb => cb.checked);
+        console.log('Checkbox changed, any checked:', isAnyLayananChecked);
+        if (isAnyLayananChecked) {
+            document.getElementById('layanan-container').classList.remove('layanan-container-error');
+        } else {
+            document.getElementById('layanan-container').classList.add('layanan-container-error');
+        }
+    });
+});
+
+// Test validasi awal saat load
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Form loaded, checking initial state');
+    const layananCheckboxes = document.querySelectorAll('.layanan-checkbox');
+    const isAnyLayananChecked = Array.from(layananCheckboxes).some(cb => cb.checked);
+    console.log('Initial checkbox state:', isAnyLayananChecked);
+});
+</script>
