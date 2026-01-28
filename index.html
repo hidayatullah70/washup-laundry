@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <!-- Tailwind CSS Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Font Awesome untuk icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Custom Tailwind Configuration -->
     <script>
         tailwind.config = {
@@ -36,45 +37,54 @@
             }
         }
     </script>
-    
+
     <!-- Custom CSS -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
-        
+
         /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
-        
+
         /* Custom hover effects */
         .service-card:hover {
             transform: translateY(-5px);
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary:hover {
             transform: scale(1.05);
             transition: all 0.2s ease;
         }
-        
+
         /* Animasi untuk hero section */
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
-        
+
         .floating {
             animation: float 5s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="bg-background text-text">
+
+<body class="bg-background text-text transition-colors duration-300">
     <!-- Container untuk modul yang akan di-load -->
     <div id="content"></div>
-    
+
     <!-- JavaScript untuk load modul -->
     <script src="js/main.js"></script>
 </body>
+
 </html>

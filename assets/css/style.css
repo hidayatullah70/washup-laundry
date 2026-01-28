@@ -529,6 +529,240 @@ p {
 }
 
 /* ===== DARK MODE SUPPORT ===== */
+/* Dark mode toggle styles */
+#dark-toggle:checked + label .toggle-circle,
+#dark-toggle-mobile:checked + label .toggle-circle {
+  transform: translateX(1.25rem);
+}
+
+#dark-toggle-mobile:checked + label .toggle-circle {
+  transform: translateX(1rem);
+}
+
+/* Manual dark mode class */
+.dark {
+  --primary: #3B82F6;
+  --secondary: #FBBF24;
+  --accent: #FB923C;
+  --background: #0F172A;
+  --text: #F1F5F9;
+  --text-light: #94A3B8;
+  --gray-light: #1E293B;
+  --gray: #334155;
+  --white: #FFFFFF;
+}
+
+.dark body {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+/* Dark mode for specific components */
+.dark #navbar {
+  background-color: #111827 !important;
+}
+
+.dark #navbar.scrolled {
+  background-color: rgba(17, 24, 39, 0.95);
+}
+
+.dark .service-card {
+  background-color: var(--gray-light);
+  border-color: var(--gray);
+}
+
+.dark .form-input {
+  background-color: var(--gray-light);
+  border-color: var(--gray);
+  color: var(--text);
+}
+
+.dark .form-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Additional dark mode fixes */
+.dark .layanan-item {
+  background-color: var(--gray-light);
+  border-color: var(--gray);
+}
+
+.dark .layanan-item:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* Fix remaining light backgrounds */
+.dark section[class*="bg-white"] {
+  background-color: var(--gray-light) !important;
+}
+
+.dark section[class*="from-white"] {
+  background-color: var(--gray-light) !important;
+}
+
+.dark section[class*="to-white"] {
+  background-color: var(--background) !important;
+}
+
+.dark section[class*="from-blue-50"] {
+  background-color: var(--gray) !important;
+}
+
+.dark section[class*="to-blue-50"] {
+  background-color: var(--background) !important;
+}
+
+/* Fix specific sections */
+.dark #keunggulan {
+  background: linear-gradient(to bottom, #1e293b, #0f172a) !important;
+}
+
+.dark #pesan {
+  background: linear-gradient(to bottom, #1e293b, #0f172a) !important;
+}
+
+/* Fix order form */
+.dark .bg-white.rounded-3xl {
+  background-color: var(--gray-light) !important;
+}
+
+/* Fix all white backgrounds in dark mode */
+.dark .bg-white {
+  background-color: var(--gray-light) !important;
+}
+
+/* Fix background elements */
+.dark .bg-background {
+  background-color: var(--gray-light) !important;
+}
+
+/* Fix specific form elements */
+.dark .bg-gray-100 {
+  background-color: var(--gray) !important;
+}
+
+/* Fix all form inputs */
+.dark input[type="text"],
+.dark input[type="tel"],
+.dark textarea {
+  background-color: var(--gray-light) !important;
+  border-color: var(--gray) !important;
+  color: var(--text) !important;
+}
+
+.dark input[type="text"]::placeholder,
+.dark input[type="tel"]::placeholder,
+.dark textarea::placeholder {
+  color: var(--text-light) !important;
+}
+
+/* Fix text colors - make all base text white except colored text */
+.dark * {
+  color: var(--text) !important;
+}
+
+/* Preserve colored text */
+.dark .text-primary,
+.dark .text-secondary,
+.dark .text-accent,
+.dark .text-green-600,
+.dark .text-orange-600,
+.dark .text-purple-600,
+.dark .text-yellow-600,
+.dark .text-pink-600,
+.dark .text-blue-400,
+.dark .text-green-400,
+.dark .text-orange-400,
+.dark .text-teal-400,
+.dark .text-sky-400,
+.dark .text-yellow-400,
+.dark .text-pink-500,
+.dark [class*="text-"]:has([class*="primary"]),
+.dark [class*="text-"]:has([class*="secondary"]),
+.dark [class*="text-"]:has([class*="accent"]) {
+  color: inherit !important;
+}
+
+/* Force white text for all remaining elements */
+.dark .font-medium,
+.dark .font-bold,
+.dark .text-lg,
+.dark .text-xl,
+.dark .text-2xl,
+.dark .text-3xl,
+.dark .text-4xl,
+.dark .text-sm,
+.dark .text-xs,
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6,
+.dark p, .dark span, .dark div, .dark li, .dark a {
+  color: var(--text) !important;
+}
+
+/* Override specific gray text classes */
+.dark .text-gray-600 {
+  color: var(--text-light) !important;
+}
+
+.dark .text-gray-700 {
+  color: var(--text) !important;
+}
+
+.dark .text-gray-500 {
+  color: var(--text-light) !important;
+}
+
+.dark .text-dark {
+  color: var(--text) !important;
+}
+
+/* Fix icon backgrounds */
+.dark .bg-blue-100 {
+  background-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+.dark .bg-green-100 {
+  background-color: rgba(34, 197, 94, 0.2) !important;
+}
+
+.dark .bg-orange-100 {
+  background-color: rgba(251, 146, 60, 0.2) !important;
+}
+
+.dark .bg-purple-100 {
+  background-color: rgba(168, 85, 247, 0.2) !important;
+}
+
+.dark .bg-yellow-100 {
+  background-color: rgba(250, 204, 21, 0.2) !important;
+}
+
+.dark .bg-pink-100 {
+  background-color: rgba(236, 72, 153, 0.2) !important;
+}
+
+/* Fix icon colors */
+.dark .text-green-600 {
+  color: rgb(74, 222, 128) !important;
+}
+
+.dark .text-orange-600 {
+  color: rgb(251, 146, 60) !important;
+}
+
+.dark .text-purple-600 {
+  color: rgb(196, 181, 253) !important;
+}
+
+.dark .text-yellow-600 {
+  color: rgb(250, 204, 21) !important;
+}
+
+.dark .text-pink-600 {
+  color: rgb(244, 114, 182) !important;
+}
+
+/* System preference dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --primary: #3B82F6;

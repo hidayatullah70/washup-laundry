@@ -39,6 +39,9 @@ async function loadModules() {
 
 // Inisialisasi semua fungsi setelah DOM siap
 function initializeFunctions() {
+    // Dark mode toggle
+    initializeDarkMode();
+    
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     if (navbar) {
@@ -320,6 +323,53 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Dark mode functionality
+function initializeDarkMode() {
+    const darkToggle = document.getElementById('dark-toggle');
+    const darkToggleMobile = document.getElementById('dark-toggle-mobile');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    // Apply the saved theme on page load
+    if (currentTheme === 'dark') {
+        html.classList.add('dark');
+        if (darkToggle) darkToggle.checked = true;
+        if (darkToggleMobile) darkToggleMobile.checked = true;
+    }
+    
+    // Listen for toggle changes (Desktop)
+    if (darkToggle) {
+        darkToggle.addEventListener('change', function() {
+            if (this.checked) {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                if (darkToggleMobile) darkToggleMobile.checked = true;
+            } else {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                if (darkToggleMobile) darkToggleMobile.checked = false;
+            }
+        });
+    }
+    
+    // Listen for toggle changes (Mobile)
+    if (darkToggleMobile) {
+        darkToggleMobile.addEventListener('change', function() {
+            if (this.checked) {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                if (darkToggle) darkToggle.checked = true;
+            } else {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                if (darkToggle) darkToggle.checked = false;
+            }
+        });
+    }
+}
 
 // Load modul saat halaman siap
 document.addEventListener('DOMContentLoaded', loadModules);

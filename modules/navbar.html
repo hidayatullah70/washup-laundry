@@ -1,5 +1,5 @@
 <!-- Navigation Bar -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md transition-all duration-300">
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-md transition-all duration-300">
     <div class="container mx-auto px-4 py-3">
         <div class="flex justify-between items-center">
             <!-- Logo -->
@@ -9,12 +9,24 @@
             
             <!-- Menu untuk Desktop & CTA Button -->
             <div class="hidden md:flex items-center justify-end space-x-8 flex-1">
-                <a href="#home" class="text-gray-700 hover:text-primary font-medium transition">Home</a>
-                <a href="#layanan" class="text-gray-700 hover:text-primary font-medium transition">Layanan</a>
-                <a href="#keunggulan" class="text-gray-700 hover:text-primary font-medium transition">Keunggulan</a>
-                <a href="#proses" class="text-gray-700 hover:text-primary font-medium transition">Proses</a>
-                <a href="#pesan" class="text-gray-700 hover:text-primary font-medium transition">Pesan</a>
-                <a href="#pesan" class="text-gray-700 hover:text-primary font-medium transition">Kontak</a>
+                <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-teal-400 font-medium transition">Home</a>
+                <a href="#layanan" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-teal-400 font-medium transition">Layanan</a>
+                <a href="#keunggulan" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-teal-400 font-medium transition">Keunggulan</a>
+                <a href="#proses" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-teal-400 font-medium transition">Proses</a>
+                <a href="#pesan" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-teal-400 font-medium transition">Pesan</a>
+                <a href="#kontak" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-teal-400 font-medium transition">Kontak</a>
+                
+                <!-- Dark Mode Toggle -->
+                <div class="flex">
+                    <span class="mr-2 text-sm text-slate-500 dark:text-slate-400">light</span>
+                    <input type="checkbox" class="hidden" id="dark-toggle" />
+                    <label for="dark-toggle">
+                        <div class="flex h-5 w-9 cursor-pointer items-center rounded-full bg-slate-500 dark:bg-teal-600 p-1">
+                            <div class="toggle-circle h-4 w-4 rounded-full bg-white transition duration-300 ease-in-out"></div>
+                        </div>
+                    </label>
+                    <span class="ml-2 text-sm text-slate-500 dark:text-slate-400">dark</span>
+                </div>
                 
                 <!-- CTA Button -->
                 <a href="https://wa.me/6285233447337?text=Halo%20Wash%20Up%20Laundry,%20aku%20mau%20Laundry%20dong..%20lagi%20mager%20nih..😁,%20tolong%20pick-up%20ya,%20please...🙏"
@@ -25,7 +37,19 @@
             
             <!-- Mobile Menu Toggle -->
             <div class="flex items-center">
-                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                <!-- Dark Mode Toggle (Mobile) -->
+                <div class="flex mr-3 md:hidden">
+                    <span class="mr-2 text-xs text-slate-500 dark:text-slate-400">light</span>
+                    <input type="checkbox" class="hidden" id="dark-toggle-mobile" />
+                    <label for="dark-toggle-mobile">
+                        <div class="flex h-4 w-8 cursor-pointer items-center rounded-full bg-slate-500 dark:bg-teal-600 p-1">
+                            <div class="toggle-circle h-3 w-3 rounded-full bg-white transition duration-300 ease-in-out"></div>
+                        </div>
+                    </label>
+                    <span class="ml-2 text-xs text-slate-500 dark:text-slate-400">dark</span>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-gray-700 dark:text-gray-300">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
